@@ -71,13 +71,13 @@ next: false
 
 　　下面用一张简图说明下SPI机制的原理
 
-​![图片](assets/640-20241226163720-ysocvbt.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-ysocvbt.webp)​
 
 #### **2.1.2 java spi 简单案例**
 
 　　如下工程目录，在某个应用工程中定义一个插件接口，而其他应用工程为了实现这个接口，只需要引入当前工程的jar包依赖进行实现即可，这里为了演示我就将不同的实现直接放在同一个工程下；
 
-​![图片](assets/640-20241226163720-swe452t.png)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-swe452t.png)​
 
 　　定义接口
 
@@ -112,7 +112,7 @@ public class TencentMsg implements MessagePlugin {
 
 　　在resources目录按照规范要求创建文件目录，并填写实现类的全类名
 
-​![图片](assets/640-20241226163720-8w1gyyc.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-8w1gyyc.webp)​
 
 　　**自定义服务加载类**
 
@@ -130,7 +130,7 @@ public class TencentMsg implements MessagePlugin {
 
 　　运行上面的程序后，可以看到下面的效果，这就是说，使用ServiceLoader的方式可以加载到不同接口的实现，业务中只需要根据自身的需求，结合配置参数的方式就可以灵活的控制具体使用哪一个实现。
 
-​![图片](assets/640-20241226163720-pwbwaai.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-pwbwaai.webp)​
 
 ### **2.2 自定义配置约定方式**
 
@@ -230,7 +230,7 @@ public class PluginApp {
 　　启动工程代码后，调用接口：  
 ​`localhost:8081/sendMsg`​，在控制台中可以看到下面的输出信息，即通过这种方式也可以实现类似serviceloader的方式，不过在实际使用时，可以结合配置参数进行灵活的控制；
 
-​![图片](assets/640-20241226163720-zmafqzn.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-zmafqzn.webp)​
 
 ### **2.3 自定义配置读取依赖jar的方式**
 
@@ -249,7 +249,7 @@ public class PluginApp {
 
 　　在当前工程下创建一个lib目录，并将依赖的jar放进去
 
-​![图片](assets/640-20241226163720-befftn0.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-befftn0.webp)​
 
 #### **2.3.2 新增读取jar的工具类**
 
@@ -419,7 +419,7 @@ public String index() throws Exception {
 
 　　以上全部完成之后，启动工程，测试一下该接口，仍然可以得到预期结果；
 
-​![图片](assets/640-20241226163720-x5qxqi4.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-x5qxqi4.webp)​
 
 　　在上述的实现中还是比较粗糙的，实际运用时，还需要做较多的优化改进以满足实际的业务需要，比如接口传入类型参数用于控制具体使用哪个依赖包的方法进行执行等；
 
@@ -552,7 +552,7 @@ public String sendMsgV3(String msg) throws Exception{
 　　启动工程之后，调用一下该接口进行测试，  
 ​`localhost:8087/sendMsgV3?msg=hello`​，通过控制台，可以看到，这种方式能够正确获取到系统中可用的服务实现；
 
-​![图片](assets/640-20241226163720-6mfnwkh.webp)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-6mfnwkh.webp)​
 
 　　利用spring的这种机制，可以很好的对系统中的某些业务逻辑通过插件化接口的方式进行扩展实现；
 
@@ -745,7 +745,7 @@ public class SmsService {
 
 　　接下来就是插件化机制中具体的SPI实现过程，两个模块的实现步骤完全一致，挑选其中一个说明，工程目录结构如下：
 
-​![图片](assets/640-20241226163720-t3ycmzr.jpg)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-t3ycmzr.jpg)​
 
 #### **4.3.1 添加对biz-app的jar的依赖**
 
@@ -795,11 +795,11 @@ com.congge.spi.BitptImpl
 　　启动biz-app服务，调用接口：  
 ​`localhost:8087/sendMsg?msg=sendMsg`​，可以看到如下效果
 
-​![图片](assets/640-20241226163720-4il27zx.jpg)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-4il27zx.jpg)​
 
 　　为什么会出现这个效果呢？因为我们在实现类配置了具体使用哪一种方式进行短信的发送，而加载插件的时候正好能够找到对应的服务实现，这样的话就给当前的业务提供了一个较好的扩展点。
 
-​![图片](assets/640-20241226163720-nbfopam.jpg)​
+​![图片](https://raw.githubusercontent.com/wk-working/demo/main/images/640-20241226163720-nbfopam.jpg)​
 
 ## **五、写在文末**
 
